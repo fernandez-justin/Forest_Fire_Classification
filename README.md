@@ -2,7 +2,7 @@
 
 ![img](./images/seattle.jpg)
 
-**Author**: [Justin Fernandez](mailto:justin_miguel_fernandez@gmail.com) [David Bruce](mailto:david.bruce14@gmail.com)
+**Author**: [Justin Fernandez](mailto:justin_miguel_fernandez@gmail.com), [David Bruce](mailto:david.bruce14@gmail.com)
 
 
 ## Problem Overview
