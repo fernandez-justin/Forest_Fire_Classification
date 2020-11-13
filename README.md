@@ -1,4 +1,4 @@
-# Forst Fire Classification
+# Forest Fire Classification
 
 ![img](./images/fire_tower.jpg)
 
