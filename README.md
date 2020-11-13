@@ -11,7 +11,7 @@ Wildfires are highly unpredictable natural disasters. They can be sparked by a v
 ![img](./images/fire_map.png)
 
 ## The Data
-The [dataset](https://www.kaggle.com/capcloudcoder/us-wildfire-data-plus-other-attributes) was compiled on Kaggle from the Fort Collins, CO: Forest Service Research Data Archive about wildfires across the US (& PR) from 1992 - 2015, NOAA National Centers for Environmental Information, and supplemented from two other sources. **We wanted to create a highly interpretable, predictive model to help firefighters classify wildfires from less dangerous to more dangerous (small or large).** The National Wildfire Coordinating Group (NWCG) uses a retroactive [classification metric](https://www.nwcg.gov/term/glossary/size-class-of-fire#:~:text=As%20to%20size%20of%20wildfire,one%2Dfourth%20acre%20or%20less%3B&text=Class%20F%20%2D%201%2C000%20acres%20or,G%20%2D%205%2C000%20acres%20or%20more) of "A-G" where "A" is the smallest category burning anything under ¼ of an acre, and "G" being the largest class of fires burning a *minimum* of 5,000 acres. 
+The [dataset](https://www.kaggle.com/capcloudcoder/us-wildfire-data-plus-other-attributes) was compiled on Kaggle from the Fort Collins, CO: Forest Service Research Data Archive about wildfires across the US (& PR) from 1992 - 2015, NOAA National Centers for Environmental Information, and supplemented from two other sources. **We wanted to create a highly interpretable, predictive model to help firefighters classify wildfires from less dangerous to more dangerous (small or large).** The National Wildfire Coordinating Group (NWCG) uses a retroactive [classification metric](https://www.nwcg.gov/term/glossary/size-class-of-fire#:~:text=As%20to%20size%20of%20wildfire,one%2Dfourth%20acre%20or%20less%3B&text=Class%20F%20%2D%201%2C000%20acres%20or,G%20%2D%205%2C000%20acres%20or%20more) of "A-G" where "A" is the smallest category burning anything under ¼ of an acre, and "G" being the largest class of fires burning a *minimum* of 5,000 acres. In order to make this a binary classification problem, we reduced these categories to small and large. As the data reflects, the vast majority of forest fires reported fall into the small category, and the other 15% are grouped into the large category, burning more than 100 acres.
 
 ![img](./images/class_imbalance.png)
 
@@ -21,16 +21,19 @@ The dataset includes features about what caused a fire, weather conditions leadi
 ![img](./images/acres_by_year.png)
 
 ## Modeling
-
+Working to produce a highly interpretable model limited our options to classifying with logistic regression and decision trees. With false positives and false negatives having equally deadly consequences we sought to minimize them both by working toward the best F1 score. By upsampling the positive minority class (large fires) and then performing recursive feature selection to limit ourselves only to the most important features, we were able to produce a highly accurate decision tree model after tuning the hyperparameters with a grid search cross validation. Our F1 score for our test set came out to 0.82 (balancing a precision score of 0.98 and a recall of 0.70). But perhaps most importantly, by visualizing the splits in our decision tree and focusing on feature importance with an XG Boost model, we were able to hone in on those factors that encourage wildfire spread. Below is a barchart explaining those features and their importance.
 
 ![img](./images/feature_importance.png)
 
 ## Conclusions & Next Steps
-
-
+-Remote fires are more likely to burn larger (presumably because they are identified late and arrived at after the fire has already grown substantially in size). Whenever and wherever possible, firefighters should operate with more resources and think about hiring and using more volunteers to help identify fires early.
+	
+-Areas where lightning storms are blowing through need to be highly monitored as lightning has the highest potential for starting a large wildfire of the known causes. The randomness and unpredictability of lightning make it a difficult cause to mitigate, but storms in drier areas should be tracked and monitored closely.
+	
+-Windiness significantly increases the risk of a fire getting out of hand and makes a fire more difficult to contain. Fires in the path of higher speed winds and changes in direction should be prioritized highly and dealt with quickly.
 
 ### Further Research
-
+With more time we would have liked to gain access to more data from wildfires in the last 5 years, as well as realtime climatological data in order to make faster, more accurate predictions. With the recommendations we made, it would be great to locate where fire towers are placed across the US and where more could be strategically located.
  
 
 ### Navigation
